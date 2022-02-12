@@ -20,6 +20,7 @@ require('dotenv').config()
 const PORT = process.env.PORT || 5000
 const app = express()
 
+app.set('port', PORT)
 app.use(express.json())
 app.set(express.urlencoded({ extended: false }))
 app.use(cors())
@@ -31,7 +32,6 @@ const client = new MongoClient(uri, {
   useNewUrlParser: true,
   useUnifiedTopology: true
 })
-
 
 app.post('/getUser', (req, res) => {
   profileId = ObjectId(req.body.id)
