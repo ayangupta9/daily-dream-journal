@@ -1,0 +1,75 @@
+#loginPage {
+  background-color: white;
+  padding-left: 5em;
+  padding-right: 5em;
+  height: 100%;
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+
+
+#loginFormContainer {
+  background-color: white;
+  width: 75%;
+  max-width: 500px;
+  height: 75%;
+  max-height: 500px;
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 0px 0px 40px -5px lightgray;
+}
+
+h1 {
+  letter-spacing: 5px;
+}
+
+#loginFormContent {
+  display: flex;
+  width: 80%;
+  padding: 0.5em;
+}
+
+#forgotPasswordButton {
+  text-decoration: solid;
+}
+
+#loginForm {
+  width: 100%;
+}
+
+.loginFieldWrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+#loginFormSubmit {
+  margin-top: 3em;
+  width: 100%;
+  border-radius: 50px;
+  letter-spacing: 2px;
+}
+
+@media (max-width: 700px) {
+  #loginPage {
+    padding-left: 0em;
+    padding-right: 0em;
+  }
+
+   #loginFormContent {
+    /* background-color: lightcoral; */
+    /* width: 100%; */
+    padding: 0em;
+  }
+
+  /* #loginForm { */
+    /* width: 90%; */
+  /* }  */
+}

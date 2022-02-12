@@ -1,0 +1,94 @@
+.searchedItem {
+  max-width: 900px;
+  border-radius: 15px;
+  box-shadow: 0px 0px 20px -2px lightgray;
+  margin-top: 10px;
+  cursor: pointer;
+  position: relative;
+  width: 90%;
+}
+
+#searchPage {
+  padding-bottom: 66px;
+}
+
+#searchPageContent {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+.searchedItemContent {
+  display: flex;
+  justify-content: space-between;
+}
+
+#searchedItemSummaryContainer {
+  /* margin-top: 170px; */
+  overflow-y: scroll;
+  height: 400px;
+  width: 100%;
+  max-width: 1000px;
+  display: flex;
+  padding-bottom: 30px;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+}
+
+.divider {
+  height: 270px;
+  width: 200px;
+}
+
+#searchBarWrapper {
+  top: 56px;
+  background-color: transparent;
+  -webkit-backdrop-filter: blur(5px) !important;
+  backdrop-filter: blur(5px) !important;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#searchBar {
+  width: 90%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.dreamSearchInput {
+  padding: 10px;
+  max-width: 800px;
+  width: 100%;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  height: 70px;
+  border-radius: 50px;
+  padding-left: 20px;
+  padding-right: 20px;
+  font-size: 2em;
+}
+
+#searchedItemSummaryContainer::-webkit-scrollbar-track {
+  /* background-color: #d0d0d0; */
+  background-color: lightgray;
+  /* box-shadow: 0px 0px 2px 0px black inset; */
+  border-radius: 20px;
+}
+
+#searchedItemSummaryContainer::-webkit-scrollbar {
+  width: 4px;
+  border-radius: 20px;
+}
+
+#searchedItemSummaryContainer::-webkit-scrollbar-thumb {
+  background-color: black;
+  margin: 1px;
+  border-radius: 10px;
+}

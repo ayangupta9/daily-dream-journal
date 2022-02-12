@@ -1,0 +1,11 @@
+/* #imageWrapper:hover {
+  background-color: black;
+} */
+
+#ppOverlay {
+  opacity: 0;
+}
+
+#ppOverlay:hover {
+  opacity: 1;
+}

@@ -1,0 +1,20 @@
+.sentimentLogo {
+  /* background-color: white; */
+  margin: 10px;
+  padding: 5px;
+  border-radius: 50px;
+  /* box-shadow: 0px 0px 7px 0px white; */
+  /* height: 80px;
+  width: 80px; */
+  font-size: 3.5em;
+  display: flex;
+  justify-content: center;
+  cursor: default;
+  align-items: center;
+  text-align: center;
+  transition: cubic-bezier(0.23, 1, 0.320, 1) 0.2s;
+}
+
+.sentimentLogo:hover {
+  font-size: 5em;
+}

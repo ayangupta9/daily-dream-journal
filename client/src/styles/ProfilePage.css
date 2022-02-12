@@ -1,0 +1,185 @@
+#entriesList::-webkit-scrollbar-track {
+  background-color: #d0d0d0;
+}
+
+#entriesList::-webkit-scrollbar {
+  height: 6px;
+  background-color: #e4e4e4;
+}
+
+#entriesList::-webkit-scrollbar-thumb {
+  background-color: #000000;
+  border-radius: 10px;
+}
+
+#profilePage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: white;
+  margin-top: 56px;
+}
+
+#profileContainer {
+  margin-top: 60px;
+  width: 80%;
+  border-radius: 20px;
+  box-shadow: 0px 0px 50px -5px lightgray;
+  margin-bottom: 106px;
+}
+
+#profileContent {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  /* width: 100%; */
+  padding: 1em;
+}
+
+#topContentWrapper {
+  padding: 1em;
+  display: flex;
+  max-width: 600px;
+  align-self: center;
+  margin: 1em;
+  flex-direction: row;
+}
+
+#imageWrapper {
+  height: 200px;
+  border-radius: 50%;
+  overflow: hidden;
+  width: 200px;
+  min-width: 200px;
+  box-shadow: 0px 0px 20px 0px lightgray;
+}
+
+#nameBioWrapper {
+  margin-left: 4em;
+  text-align: left;
+  min-width: auto;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+h1 {
+  display: inline-block;
+  vertical-align: top;
+  font-weight: bold;
+}
+
+h4 {
+  display: inline-block;
+  vertical-align: top;
+}
+
+#calendarHeatmapWrapper {
+  width: 80%;
+  align-self: center;
+  overflow-x: scroll;
+  align-content: center;
+  padding: 1em;
+  margin: auto;
+  margin-bottom: 30px;
+  border-radius: 10px;
+  /* box-shadow: 0px 0px 10px lightgray inset; */
+  /* box-shadow: 0px 0px 10px lightgray; */
+}
+
+#calendarHeatmapWrapper::-webkit-scrollbar-track {
+  background-color: #d0d0d0;
+}
+
+#calendarHeatmapWrapper::-webkit-scrollbar {
+  height: 3px;
+  background-color: #e4e4e4;
+}
+
+#calendarHeatmapWrapper::-webkit-scrollbar-thumb {
+  background-color: #000000;
+  border-radius: 10px;
+}
+
+#entriesList {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 10px;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  /* background-color: lightcoral; */
+}
+
+#entriesWrapper {
+  display: flex;
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+  flex-direction: column;
+  flex-wrap: wrap;
+  flex-grow: 2;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (max-width: 800px) {
+  #entriesList {
+    grid-template-columns: auto;
+  }
+}
+
+@media (max-width: 650px) {
+  #topContentWrapper {
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  #nameBioWrapper {
+    justify-content: center;
+    align-items: center;
+    margin-left: 0em;
+    margin-top: 2em;
+  }
+}
+
+#datesHeatmapWrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#yearChanger {
+  display: flex;
+  /* background-color: yellowgreen; */
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+#yearChanger h4 {
+  font-size: 2em;
+  margin: 0;
+  margin-left: 1em;
+  margin-right: 1em;
+  letter-spacing: 3px;
+}
+
+.yearChangeButton {
+  border: none;
+  /* margin-left: 10px; */
+  /* margin-right: 10px; */
+  display: flex;
+  align-items: center;
+
+  transition: 0.1s ease-out;
+  /* background-color: red; */
+  /* padding: 0em; */
+}
+
+.yearChangeButton:hover {
+  /* font-size: 2em; */
+  transform: scale(1.5);
+}

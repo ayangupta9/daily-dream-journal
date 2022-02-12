@@ -1,0 +1,85 @@
+.navbar-style {
+  background-color: rgba(0, 0, 0, 0) !important;
+  -webkit-backdrop-filter: blur(5px) !important;
+  backdrop-filter: blur(3px);
+  border-bottom: solid 1px lightgray;
+  padding: 0;
+}
+
+.navbar-style > * {
+  background-color: transparent;
+}
+
+.collapse {
+  height: 56px;
+  background-color: transparent;
+}
+
+.navbar-nav {
+  background-color: transparent;
+  height: 100%;
+}
+
+.nav-link {
+  width: 80px;
+  background-color: transparent !important;
+  transition: cubic-bezier(0.075, 0.82, 0.165, 1) 0.3s;
+  padding-left: 10px !important;
+  padding-right: 10px !important;
+  color: #292b2c;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.navbar-brand {
+  font-size: 1.5em;
+}
+
+.navbar-brand:hover {
+  color: white;
+  font-size: 1.5em;
+}
+
+.nav-link:hover {
+  background-color: #333333 !important;
+  color: transparent !important;
+  /* color: white !important; */
+}
+
+.nav-link:hover::after {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  position: absolute;
+  width: 80px;
+  align-self: center;
+  margin: auto;
+  color: white !important;
+}
+
+.nav-link[href*='create']:hover::after {
+  content: '📝';
+  font-size: 1.25em;
+}
+.nav-link[href*='search']:hover::after {
+  content: '🔍';
+  font-size: 1.25em;
+}
+.nav-link[href*='profile']:hover::after {
+  content: '👽';
+  font-size: 1.25em;
+}
+.nav-link[href*='logout']:hover::after {
+  content: '😴';
+  font-size: 1.25em;
+}
+.nav-link[href*='login']:hover::after {
+  content: '⏰';
+  font-size: 1.25em;
+}
+.nav-link[href*='signup']:hover::after {
+  content: '🆕';
+  font-size: 1.25em;
+}

@@ -1,0 +1,17 @@
+.App {
+  text-align: center;
+  height: 100%;
+}
+
+#createEntryFloatButtonWrapper {
+  position: fixed;
+  right: 3vw;
+  bottom: 3vh;
+}
+
+#createEntryButton {
+  padding-left: 2em;
+  padding-right: 2em;
+  border-radius: 60px;
+}
+

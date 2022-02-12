@@ -1,0 +1,55 @@
+#tagsScrollContainer::-webkit-scrollbar-track {
+  background-color: #f5f5f5;
+}
+
+#tagsScrollContainer::-webkit-scrollbar {
+  height: 6px;
+  background-color: #f5f5f5;
+}
+
+#tagsScrollContainer::-webkit-scrollbar-thumb {
+  width: 6px !important;
+  background-color: #000000;
+  border-radius: 10px;
+}
+
+.tag {
+  border-radius: 5px;
+}
+
+.tag-title {
+  padding-left: 12px;
+  padding-right: 7px;
+}
+
+.tags-input {
+  width: 100%;
+}
+
+#tagsScrollContainer {
+  margin-top: 10px;
+  padding-top: 10px;
+  background-color: lightgray;
+  overflow-x: scroll;
+  white-space: 'nowrap';
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.tag-title {
+  display: inline-block;
+  border-radius: 15px;
+  font-size: 12px;
+  text-align: center;
+}
+
+.removeTagButton {
+  margin-left: 10px;
+  padding: 3px;
+  text-align: center;
+  /* font-family: monospace; */
+  font-weight: bold;
+  cursor: pointer;
+  color: white;
+}

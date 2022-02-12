@@ -1,0 +1,228 @@
+#textAnalysisContent {
+  display: flex;
+  width: 100%;
+  box-shadow: 0px 0px 40px -5px lightgray;
+  border-radius: 20px;
+  max-width: 900px;
+  justify-content: center;
+  flex-direction: column;
+  padding: 1em;
+  top: 70px;
+  margin-bottom: 106px;
+  z-index: 0;
+  position: relative;
+  padding-bottom: 30px;
+}
+@media (max-width: 900px) {
+  #textAnalysisContent {
+    top: 0;
+  }
+}
+
+.firstComponent {
+  background: linear-gradient(0.125turn, red, orange);
+}
+
+.secondComponent {
+  /* background: linear-gradient(0.125turn, #2193b0,  #6dd5ed); */
+  /* background: linear-gradient(0.125turn, #01969b, #4dffe1); */
+  background: linear-gradient(0.125turn, #ee9ca7, #ffdde1);
+}
+
+.thirdComponent {
+  /* background: linear-gradient(0.125turn, green, yellowgreen); */
+  background: linear-gradient(0.125turn, #4568dc, #b06ab3);
+}
+
+#categoriesContainer::-webkit-scrollbar-track {
+  background-color: #d0d0d0;
+  box-shadow: 0px 0px 2px 0px gray inset;
+  border-radius: 20px;
+}
+
+#categoriesContainer::-webkit-scrollbar {
+  width: 4px;
+  border-radius: 20px;
+}
+
+#categoriesContainer::-webkit-scrollbar-thumb {
+  background-color: #ffffff;
+  border-radius: 10px;
+}
+
+#entitiesContainer::-webkit-scrollbar-track {
+  /* background-color: #d0d0d0; */
+  background-color: #888888;
+  box-shadow: 0px 0px 2px 0px black inset;
+  border-radius: 20px;
+}
+
+#entitiesContainer::-webkit-scrollbar {
+  height: 4px;
+  border-radius: 20px;
+}
+
+#entitiesContainer::-webkit-scrollbar-thumb {
+  background-color: #ffffff;
+  border-radius: 10px;
+}
+
+.boldCategoryLabel {
+  font-size: 14px;
+  text-align: start;
+  /* padding-bottom: 5px; */
+  color: black;
+  /* background-color: black; */
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+.categoryLabelWrapper {
+  flex-basis: 45%;
+  display: flex;
+  /* justify-content: stretch; */
+  padding-left: 20px;
+  padding-right: 20px;
+  padding: 10px;
+  margin: 5px;
+  gap: 5px;
+  border-radius: 10px;
+  flex-direction: column;
+  align-items: center;
+  background-color: rgba(255, 255, 255, 1);
+  box-shadow: 0px 0px 7px 0px lightgray;
+}
+
+#categoriesContainer {
+  max-height: 250px;
+  overflow-y: scroll;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.emotionsCategoriesWrapper {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+@media (max-width: 700px) {
+  .emotionsCategoriesWrapper {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+.categoriesWrapper {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  max-width: 800px;
+  flex: 1;
+}
+
+.boldCategoryLabel {
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
+.categoryScore {
+  font-size: 20px;
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}
+
+.emotionsWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  flex: 1;
+}
+
+.doughnutInfo {
+  font-size: 12px;
+  text-align: left;
+  margin-left: 5px;
+}
+
+#doughnutChart {
+  width: 75%;
+}
+
+#doughnutContainer {
+  background-color: white;
+  border-radius: 50%;
+}
+
+#entitiesWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 95%;
+}
+
+#entitiesContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  width: 100%;
+  padding: 10px;
+  max-height: 550px;
+  flex-wrap: wrap;
+  overflow-x: scroll;
+  gap: 10px;
+}
+
+#entityWrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  background-color: white;
+  border-radius: 15px;
+}
+
+.list-group-item {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.entityEmotionContainer {
+  width: 100%;
+  border-radius: 5px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.sentimentComponentWrapper {
+  align-self: center;
+  max-width: 800px;
+}
+
+#containsSentiments {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+}
+
+.eachSentiment {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.confidenceScore {
+  font-size: 2.5em;
+}

@@ -1,0 +1,71 @@
+#loggedInFrontPage {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  align-items: center;
+}
+#loggedInFrontPageContent {
+  display: flex;
+  margin: 1em;
+  width: 100%;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#loggedInFrontPageMainHeader {
+  font-size: 4em;
+  font-weight: 900;
+  color: #333333;
+  padding-left: 0.5em;
+  padding-right: 0.5em;
+  letter-spacing: 5px;
+  margin-bottom: 0.5em;
+}
+
+#frontPageSubHeader {
+  overflow-wrap: break-word;
+  font-size: 2em;
+  /* display: flex; */
+  color: #333333;
+  letter-spacing: 5px;
+  word-wrap: break-word;
+  padding-left: 1em;
+  padding-right: 1em;
+  text-align: center;
+  /* justify-content: center; */
+  /* align-items: center; */
+  margin-bottom: 1em;
+  white-space: normal;
+  width: 100%;
+}
+
+#createEntryButtonWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+}
+
+@media (max-width: 610px) {
+  #createEntryButtonWrapper {
+    flex-direction: column;
+  }
+}
+
+.frontpageCreateEntryButton {
+  width: 200px;
+  -webkit-backdrop-filter: blur(5px) !important;
+  backdrop-filter: blur(5px) !important;
+  font-size: 1em;
+  letter-spacing: 5px;
+}
+
+.frontpageLogoutButton {
+  width: 200px;
+  -webkit-backdrop-filter: blur(5px) !important;
+  backdrop-filter: blur(5px) !important;
+  font-size: 1em;
+  letter-spacing: 5px;
+}

@@ -1,0 +1,37 @@
+.drawingCanvasWrapper::-webkit-scrollbar-track {
+  background-color: #d0d0d0;
+}
+
+.drawingCanvasWrapper::-webkit-scrollbar {
+  height: 4px;
+  background-color: #e4e4e4;
+}
+
+.drawingCanvasWrapper::-webkit-scrollbar-thumb {
+  background-color: #000000;
+  border-radius: 10px;
+}
+
+#toolBar {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  align-items: centerer;
+}
+
+.drawingCanvasWrapper {
+  padding: 1em;
+  overflow-x: scroll;
+  align-content: center;
+  align-self: center;
+  margin-top: 10px;
+}
+
+.react-sketch-canvas {
+  cursor: crosshair;
+  box-shadow: 0px 0px 15px 0px lightgray;
+  border: None;
+}

@@ -1,0 +1,25 @@
+.page-link {
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  border: 1px solid lightgray;
+  margin-left: 10px;
+  color: black;
+  margin-right: 10px;
+}
+
+#paginateWrapper {
+  margin-top: 20px;
+}
+
+.pagination .active .page-link {
+  background-color: black;
+  border-color: lightgray;
+}
+
+@media (max-width: 530px) {
+  ul.pagination {
+    display: flex;
+    flex-wrap: wrap;
+  }
+}

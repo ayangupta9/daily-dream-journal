@@ -1,0 +1,64 @@
+#frontPage {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#frontPageContent {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+#frontPageMainHeader {
+  font-size: 4em;
+  font-weight: 900;
+  color: #333333;
+  padding-left: 0.5em;
+  padding-right: 0.5em;
+  letter-spacing: 5px;
+  margin-bottom: 0.5em;
+}
+
+#userAuthButtonsWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+}
+
+#loginfrontPageSubHeader {
+  overflow-wrap: break-word;
+  font-size: 2em;
+  /* display: flex; */
+  color: #333333;
+  inline-size: 150px;
+  letter-spacing: 5px;
+  word-wrap: break-word;
+  padding-left: 1em;
+  padding-right: 1em;
+  /* justify-content: flex-start; */
+  /* align-items: center; */
+  text-align: center;
+  margin-bottom: 1em;
+  white-space: normal;
+  width: 100%;
+}
+
+.frontpageAuthButton {
+  -webkit-backdrop-filter: blur(5px) !important;
+  backdrop-filter: blur(5px) !important;
+  width: 200px;
+  font-size: 1em;
+  letter-spacing: 5px;
+}
+
+@media (max-width: 610px) {
+  #userAuthButtonsWrapper {
+    flex-direction: column;
+  }
+}
