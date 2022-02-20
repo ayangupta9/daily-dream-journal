@@ -1,18 +1,16 @@
 import React, { useEffect, useState } from 'react'
 import { Navigate } from 'react-router-dom'
+import { setCurrentUser } from '../../util/AccessCurrentUser'
 
-const Logout = ({ value }) => {
-  const [loggedOut, setLoggedOut] = useState(false)
+const Logout = ({ isLoggedIn, setIsLoggedIn }) => {
   useEffect(() => {
     localStorage.removeItem('currentUser')
     localStorage.removeItem('entryImages')
     window.sessionStorage.setItem('isUserUpdated', false)
-    value.setCurrentUser(null)
+    setIsLoggedIn(false)
+  }, [])
 
-    setLoggedOut(true)
-  }, [value])
-
-  return <>{loggedOut && <Navigate to='/login' />}</>
+  return <>{isLoggedIn && <Navigate to='/login' />}</>
 }
 
 export default Logout

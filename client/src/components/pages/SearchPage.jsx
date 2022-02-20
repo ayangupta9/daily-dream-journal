@@ -3,6 +3,7 @@ import SearchBar from '../utils/SearchBar'
 import '../../styles/SearchPage.css'
 import { useNavigate } from 'react-router-dom'
 import { formattedDateForEntrySummary } from '../../util/FormattedDate'
+import { accessCurrentUser } from '../../util/AccessCurrentUser'
 
 const SearchedItemSummary = ({ entry }) => {
   const navigate = useNavigate()
@@ -32,13 +33,19 @@ const SearchedItemSummary = ({ entry }) => {
   )
 }
 
-const SearchPage = ({ value }) => {
+const SearchPage = () => {
   const [searchedQuery, setSearchedQuery] = useState('')
   const [searchedList, setSearchedList] = useState([])
   const searchBarRef = useRef(null)
 
-  const [currentUser, setCurrentUser] = useState(value.currentUser)
-  let totalEntries = currentUser.entries
+  const navigate = useNavigate()
+
+  let totalEntries = null
+  if (accessCurrentUser()) {
+    totalEntries = accessCurrentUser().entries
+  } else {
+    navigate('/error')
+  }
 
   useEffect(() => {
     totalEntries.forEach(entry => {
@@ -58,21 +65,6 @@ const SearchPage = ({ value }) => {
       }
     })
   }, [])
-
-  // function queryInDreamType (dreamType) {
-  //   const presentDreamTypes = Object.entries(dreamType)
-  //     .map(entry => {
-  //       if (entry[1] === true || entry[1] === 'true') {
-  //         return entry[0]
-  //       }
-  //     })
-  //     .filter(val => {
-  //       return val !== undefined
-  //     })
-
-  //   const dtString = presentDreamTypes.join(' ')
-  //   return dtString.includes(searchedQuery)
-  // }
 
   function searchInEntries () {
     let filteredEntries = []
@@ -100,11 +92,17 @@ const SearchPage = ({ value }) => {
           setSearchedQuery={setSearchedQuery}
         />
         <div className='divider'></div>
-        <div id='searchedItemSummaryContainer'>
-          {Array.from(searchedList).map((item, idx) => {
-            return <SearchedItemSummary key={idx} entry={item} />
-          })}
-        </div>
+        {searchedList.length === 0 ? (
+          <div className='alert'>
+            <i>No entries yet! 😴</i>
+          </div>
+        ) : (
+          <div id='searchedItemSummaryContainer'>
+            {Array.from(searchedList).map((item, idx) => {
+              return <SearchedItemSummary key={idx} entry={item} />
+            })}
+          </div>
+        )}
       </div>
     </div>
   )

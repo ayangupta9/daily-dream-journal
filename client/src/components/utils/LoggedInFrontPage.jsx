@@ -1,7 +1,8 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import '../../styles/LoggedInFrontPage.css'
 import ParticlesBg from 'particles-bg'
+import { isUserLoggedIn } from '../../util/AccessCurrentUser'
 
 const LoggedInFrontPage = () => {
   return (
@@ -26,14 +27,14 @@ const LoggedInFrontPage = () => {
 
         <div id='createEntryButtonWrapper'>
           <Link
-            to={'/create'}
+            to='/create'
             className='btn btn-outline-warning frontpageCreateEntryButton'
           >
             CREATE 📝
           </Link>
 
           <Link
-            to={'/logout'}
+            to='/logout'
             className='btn btn-outline-danger frontpageLogoutButton'
           >
             LOGOUT 😴

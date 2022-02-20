@@ -19,7 +19,7 @@ const DatesHeatmap = props => {
     setEndDate(
       props.dates[Object.keys(props.dates)[activeIndex]].dateRange.endDate
     )
-  }, [activeIndex, props.dates])
+  }, [activeIndex])
 
   return (
     <>

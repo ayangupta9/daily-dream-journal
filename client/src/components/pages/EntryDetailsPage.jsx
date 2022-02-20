@@ -9,6 +9,7 @@ import Tooltip from 'rc-tooltip'
 import 'rc-tooltip/assets/bootstrap_white.css'
 import DreamImageComponent from '../utils/DreamImageComponent'
 import { formattedDateForEntrySummary } from '../../util/FormattedDate'
+import { accessCurrentUser } from '../../util/AccessCurrentUser'
 
 const DreamContent = ({
   textContent,
@@ -51,7 +52,6 @@ const DreamContent = ({
                 return (
                   <>
                     <Tooltip
-                
                       placement={'top'}
                       trigger={'click'}
                       key={idx}
@@ -129,7 +129,6 @@ const NotebookTablets = ({ isToggled, setShowAnalysis, textAnalysisRef }) => {
         flexDirection: 'row',
         gap: '25px',
         marginLeft: '20px'
-        // marginTop: '5px'
       }}
     >
       <div
@@ -140,10 +139,6 @@ const NotebookTablets = ({ isToggled, setShowAnalysis, textAnalysisRef }) => {
                   first: true,
                   second: false
                 })
-
-                // window.scrollBy({
-                //   top: textAnalysisRef.current.offsetTop
-                // })
               }
             : null
         }
@@ -161,9 +156,6 @@ const NotebookTablets = ({ isToggled, setShowAnalysis, textAnalysisRef }) => {
             first: false,
             second: true
           })
-          // window.scrollTo({
-          //   top: textAnalysisRef.current.offsetTop -20
-          // })
         }}
         style={{
           backgroundColor: 'blueviolet'
@@ -193,7 +185,7 @@ const EntryDetailsPage = props => {
   const dreamTypeEmoji = ['😱', '👾', '💡', '👁', '🌪', '🔁']
 
   useEffect(() => {
-    const currentUser = JSON.parse(localStorage.getItem('currentUser'))
+    const currentUser = accessCurrentUser()
     let entries = currentUser.entries
 
     const entryId = params.pathname.split('/')[2]
@@ -253,7 +245,6 @@ const EntryDetailsPage = props => {
             isToggled={isToggled}
             setShowAnalysis={setShowAnalysis}
             textAnalysisRef={textAnalysisRef}
-            // entryContentRef={entryContentRef}
           />
 
           <div ref={entryContentRef} id='entryDetailsContent'>
@@ -426,8 +417,7 @@ const EntryDetailsPage = props => {
 
       {isToggled === true &&
       textAnalysis &&
-      Object.values(showAnalysis).findIndex(val => val === true) !==
-        -1 /*&& showAnalysis.textAnalysis*/ ? (
+      Object.values(showAnalysis).findIndex(val => val === true) !== -1 ? (
         <TextAnalysisContent
           textAnalysisRef={textAnalysisRef}
           textAnalysis={textAnalysis}
@@ -439,14 +429,3 @@ const EntryDetailsPage = props => {
 }
 
 export default EntryDetailsPage
-
-/*
-
-😱 - nightmare
-👾 - fantasy
-💡 - symbolic
-👁 -lucid
-🌪 - bizzare
-🔁 - recurring
-
-*/

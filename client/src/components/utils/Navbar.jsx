@@ -8,32 +8,20 @@ import {
   Collapse
 } from 'reactstrap'
 import '../../styles/NavbarContainer.css'
+import { accessCurrentUser } from '../../util/AccessCurrentUser'
 
-const NavbarContainer = () => {
-  const [currentUser, setCurrentUser] = useState(null)
-
+const NavbarContainer = ({ isLoggedIn }) => {
   const [links, setLinks] = useState([])
-
   useEffect(() => {
-    const stringifiedCurrentUser = localStorage.getItem('currentUser')
 
-    const user =
-      stringifiedCurrentUser !== 'undefined'
-        ? JSON.parse(stringifiedCurrentUser)
-        : null
-
-    setCurrentUser(user)
-  }, [])
-
-  useEffect(() => {
-    if (currentUser) {
+    if (isLoggedIn) {
       setLinks([
         { name: 'CREATE', symbol: '📝', link: '/create' },
         { name: 'SEARCH', symbol: '🔍', link: '/search' },
         {
           name: 'PROFILE',
           symbol: '👤',
-          link: `/profile/${currentUser.username}`
+          link: `/profile/${accessCurrentUser().username}`
         },
         {
           name: 'LOGOUT',
@@ -51,40 +39,41 @@ const NavbarContainer = () => {
         { name: 'SIGNUP', symbol: '🆕', link: '/signup' }
       ])
     }
-  }, [currentUser])
+  }, [isLoggedIn])
 
   const [open, setOpen] = useState(false)
 
+
   return (
     <div>
-      {links.length > 0 && (
-        <Navbar
-          className='fixed-top navbar-style'
-          color='light'
-          light
-          expand='sm'
-        >
-          <NavbarBrand href='/'>⛅</NavbarBrand>
+      <Navbar
+        className='fixed-top navbar-style'
+        color='light'
+        light
+        expand='sm'
+      >
+        <NavbarBrand href='/'>⛅</NavbarBrand>
 
-          <NavbarToggler
-            onClick={() => {
-              setOpen(!open)
-            }}
-          />
+        <NavbarToggler
+          onClick={() => {
+            setOpen(!open)
+          }}
+        />
 
-          <Collapse isOpen={open} navbar>
-            <Nav className='ms-auto' navbar>
-              {links.map((link, index) => {
-                return (
-                  <NavLink key={index} href={link.link}>
-                    {link.name}
-                  </NavLink>
-                )
-              })}
-            </Nav>
-          </Collapse>
-        </Navbar>
-      )}
+        <Collapse isOpen={open} navbar>
+          <Nav className='ms-auto' navbar>
+
+            {links.map((link, index) => {
+              return (
+                <NavLink key={index} href={link.link}>
+                  {link.name}
+                </NavLink>
+              )
+            })}
+          </Nav>
+        </Collapse>
+      </Navbar>
+      {/* )} */}
     </div>
   )
 }

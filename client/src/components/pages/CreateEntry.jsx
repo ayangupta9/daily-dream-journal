@@ -8,6 +8,7 @@ import DrawingCanvas from '../utils/DrawingCanvas'
 
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
+import { accessCurrentUser, setCurrentUser } from '../../util/AccessCurrentUser'
 
 const DreamEntrySchema = Yup.object().shape({
   entrytitle: Yup.string()
@@ -23,7 +24,7 @@ const DreamEntrySchema = Yup.object().shape({
 })
 
 const CreateEntry = () => {
-  const currentUser = JSON.parse(localStorage.getItem('currentUser'))
+  const currentUser = JSON.parse(accessCurrentUser())
 
   const [characterTags, setCharacterTags] = useState([])
   const [locationTags, setLocationTags] = useState([])
@@ -100,10 +101,7 @@ const CreateEntry = () => {
 
             if ('newCurrentUser' in serverresult) {
               const newCurrentUser = serverresult.newCurrentUser
-              localStorage.setItem(
-                'currentUser',
-                JSON.stringify(newCurrentUser)
-              )
+              setCurrentUser(newCurrentUser)
 
               if (imageArrayBuffer.byteLength > 5776) {
                 if (
@@ -352,36 +350,3 @@ const CreateEntry = () => {
 }
 
 export default CreateEntry
-
-/* RATING */
-/* <div
-                    style={{
-                      display: 'flex',
-                      flexDirection: 'column',
-                      justifyContent: 'center',
-                      alignItems: 'center'
-                    }}
-                    className='mt-4 form-group'
-                  >
-                    <label htmlFor='simple-controlled'>RATE YOUR DREAM</label>
-                    <Rating
-                      id='entryrating'
-                      name='entryrating'
-                      precision={0.5}
-                      defaultValue={0}
-                      value={formik.values.entryrating}
-                      onChange={(e, newVal) => {
-                        setRatingValue(newVal)
-                      }}
-                      size='large'
-                    />
-                  </div> */
-
-// function arrayBufferToString(buffer){
-//   var arr = new Uint8Array(buffer);
-//   var str = String.fromCharCode.apply(String, arr);
-//   if(/[\u0080-\uffff]/.test(str)){
-//       throw new Error("this string seems to contain (still encoded) multibytes");
-//   }
-//   return str;
-// }

@@ -7,6 +7,7 @@ import '../../styles/ProfilePage.css'
 import BioModal from '../utils/BioModal'
 import { formattedDateForProfile } from '../../util/FormattedDate'
 import ProfilePictureImageSvg from '../utils/ProfilePictureImageSvg'
+import { accessCurrentUser } from '../../util/AccessCurrentUser'
 
 function getRandomColor () {
   const colorsForEachDay = [
@@ -24,10 +25,7 @@ function getRandomColor () {
 }
 
 const ProfilePage = () => {
-  const currentUser = localStorage.getItem('currentUser')
-    ? JSON.parse(localStorage.getItem('currentUser'))
-    : null
-
+  const currentUser = accessCurrentUser()
   const [ppColor, setPpColor] = useState(null)
 
   const name = currentUser.username ? currentUser.username : 'no_name'

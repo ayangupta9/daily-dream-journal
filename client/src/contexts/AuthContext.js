@@ -3,49 +3,48 @@ import React, { useEffect, useState } from 'react'
 export const AuthContext = React.createContext({})
 
 export default function AuthProvider ({ children }) {
-  const [currentUser, setCurrentUser] = useState(
-    localStorage.getItem('currentUser') !== 'undefined'
-      ? JSON.parse(localStorage.getItem('currentUser'))
-      : null
-  )
+  const [currentUser, setCurrentUser] = useState(null)
 
   function checkLocalStorage () {
     return (
-      localStorage.getItem('currentUser') !== 'undefined' &&
-      localStorage.getItem('currentUser') !== null
+      localStorage.getItem('currentUser') === undefined ||
+      localStorage.getItem('currentUser') === 'undefined' ||
+      localStorage.getItem('currentUser') === null
     )
   }
 
-  function checkSessionStorage () {
-    return (
-      window.sessionStorage.getItem('isUserUpdated') === null ||
-      window.sessionStorage.getItem('isUserUpdated') === 'false' ||
-      window.sessionStorage.getItem('isUserUpdated') === false
-    )
-  }
+  async function setNewData (setByLogin = false, result = null) {
+    if (setByLogin) {
+      setCurrentUser(result.currentUser)
+      return
+    }
 
-  useEffect(() => {
-    async function setNewData () {
-      if (checkSessionStorage() && checkLocalStorage()) {
+    if (!checkLocalStorage()) {
+      const currUser = JSON.parse(localStorage.getItem('currentUser'))
+      if (
+        window.sessionStorage.getItem('isUserUpdated') !== true ||
+        window.sessionStorage.getItem('isUserUpdated') !== 'true'
+      ) {
         const response = await fetch('/getUser', {
           method: 'POST',
           mode: 'cors',
           headers: {
             'Content-Type': 'application/json'
           },
-          body: JSON.stringify({ id: currentUser._id })
+          body: JSON.stringify({ id: currUser._id })
         })
 
         const result = await response.json()
         localStorage.setItem('currentUser', JSON.stringify(result.currentUser))
-        setCurrentUser(JSON.stringify(result.currentUser))
+        setCurrentUser(result.currentUser)
+
         const imageResponse = await fetch('/allImages', {
           method: 'POST',
           mode: 'cors',
           headers: {
             'Content-Type': 'application/json'
           },
-          body: JSON.stringify({ profileId: currentUser._id })
+          body: JSON.stringify({ profileId: currUser._id })
         })
 
         const imageResults = await imageResponse.json()
@@ -56,15 +55,18 @@ export default function AuthProvider ({ children }) {
             JSON.stringify(imageResults.allImages)
           )
         }
+
         window.sessionStorage.setItem('isUserUpdated', true)
       }
     }
+  }
 
+  useEffect(() => {
     setNewData()
-  }, [currentUser])
+  }, [])
 
   return (
-    <AuthContext.Provider value={{ currentUser, setCurrentUser }}>
+    <AuthContext.Provider value={{ currentUser, setCurrentUser, setNewData }}>
       {children}
     </AuthContext.Provider>
   )

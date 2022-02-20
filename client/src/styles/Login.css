@@ -9,8 +9,6 @@
   align-items: center;
 }
 
-
-
 #loginFormContainer {
   background-color: white;
   width: 75%;
@@ -57,19 +55,16 @@ h1 {
   letter-spacing: 2px;
 }
 
+
 @media (max-width: 700px) {
   #loginPage {
     padding-left: 0em;
     padding-right: 0em;
   }
 
-   #loginFormContent {
+  #loginFormContent {
     /* background-color: lightcoral; */
     /* width: 100%; */
     padding: 0em;
   }
-
-  /* #loginForm { */
-    /* width: 90%; */
-  /* }  */
 }

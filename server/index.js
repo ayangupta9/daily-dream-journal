@@ -140,16 +140,7 @@ app.post('/login', (req, res) => {
       const isPasswordValid = await bcrypt.compare(user.password, result.hash)
 
       if (isPasswordValid) {
-        const currentUser = {
-          username: result.username,
-          email: result.email,
-          _id: result._id,
-          bio: result.bio,
-          // imageUrl: result.image,
-          entries: result.entries,
-          dates: result.dates,
-          joinedOn: result.joinedOn
-        }
+        const currentUser = result
 
         res.json({
           code: 200,

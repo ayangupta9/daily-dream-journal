@@ -31,7 +31,6 @@ export const formattedDateForProfile = timestamp => {
     .getDate()
     .toString()
     .padStart(2, 0)}, ${date.getFullYear()}`
-  console.log(finalFormattedDate)
   return finalFormattedDate
 }
 

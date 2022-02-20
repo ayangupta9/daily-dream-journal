@@ -1,11 +1,12 @@
 import { Formik } from 'formik'
-import React from 'react'
+import React, { useState } from 'react'
 import * as Yup from 'yup'
 import { useNavigate } from 'react-router-dom'
 import '../../styles/Signup.css'
 
 import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
+import LoadingModal from '../utils/LoadingModal'
 
 const SignUpSchema = Yup.object().shape({
   username: Yup.string()
@@ -22,9 +23,12 @@ const SignUpSchema = Yup.object().shape({
 
 const Signup = () => {
   const navigate = useNavigate()
+  const [open, setOpen] = useState(false)
 
   return (
     <div id='signupPage'>
+      <LoadingModal open={open} />
+
       <ToastContainer
         position='bottom-right'
         autoClose={5000}
@@ -44,6 +48,8 @@ const Signup = () => {
             initialValues={{ username: '', email: '', password: '' }}
             validationSchema={SignUpSchema}
             onSubmit={async (values, { resetForm, setSubmitting }) => {
+              setOpen(true)
+
               const response = await fetch('/signup', {
                 method: 'POST',
                 mode: 'cors',
@@ -57,8 +63,11 @@ const Signup = () => {
               resetForm()
 
               if (result.code === 401 || result.code === 404) {
+                setOpen(false)
+
                 toast.error(result.message)
               } else if (result.code === 200) {
+                setOpen(false)
                 toast.success(result.message, {
                   position: 'bottom-right',
                   autoClose: 5000,
