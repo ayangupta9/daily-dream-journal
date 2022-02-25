@@ -12,9 +12,9 @@ const KeywordsComponent = props => {
 
       {props.keywords
         .sort((keyword1, keyword2) => keyword2.relevance - keyword1.relevance)
-        .map(keyword => {
+        .map((keyword, idx) => {
           return (
-            <div className='font-monospace keywordSpan'>
+            <div key={idx} className='font-monospace keywordSpan'>
               {keyword.text}
               <span
                 style={{

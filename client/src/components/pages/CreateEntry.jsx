@@ -5,7 +5,7 @@ import '../../styles/CreateEntry.css'
 import * as Yup from 'yup'
 import DreamTypeCheckboxes from '../utils/DreamTypeCheckboxes'
 import DrawingCanvas from '../utils/DrawingCanvas'
-
+import LoadingModal from '../utils/LoadingModal'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 import { accessCurrentUser, setCurrentUser } from '../../util/AccessCurrentUser'
@@ -24,7 +24,8 @@ const DreamEntrySchema = Yup.object().shape({
 })
 
 const CreateEntry = () => {
-  const currentUser = JSON.parse(accessCurrentUser())
+  const [open, setOpen] = useState(false)
+  const currentUser = accessCurrentUser()
 
   const [characterTags, setCharacterTags] = useState([])
   const [locationTags, setLocationTags] = useState([])
@@ -43,6 +44,8 @@ const CreateEntry = () => {
 
   return (
     <div id='createEntryPage'>
+      <LoadingModal open={open} />
+
       <h1 className='mb-4 fw-light'>CREATE A NEW ENTRY 📝</h1>
       <div id='createEntryContainer'>
         <Formik
@@ -55,6 +58,7 @@ const CreateEntry = () => {
             entry_postscript: ''
           }}
           onSubmit={async (values, { setSubmitting, resetForm }) => {
+            setOpen(true)
             const result = {
               ...values,
               dreamType: JSON.stringify(dreamType),
@@ -129,9 +133,10 @@ const CreateEntry = () => {
               }
 
               setSubmitting(false)
-
+              setOpen(false)
               navigate(`/profile/${newCurrentUser.username}`)
             } else {
+              setOpen(false)
             }
           }}
         >

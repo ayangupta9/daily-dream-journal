@@ -10,7 +10,7 @@ import 'rc-tooltip/assets/bootstrap_white.css'
 import DreamImageComponent from '../utils/DreamImageComponent'
 import { formattedDateForEntrySummary } from '../../util/FormattedDate'
 import { accessCurrentUser } from '../../util/AccessCurrentUser'
-
+import '../../styles/EntryDetailsPage.css'
 const DreamContent = ({
   textContent,
   sentenceSentiment,
@@ -50,63 +50,62 @@ const DreamContent = ({
                 }
 
                 return (
-                  <>
-                    <Tooltip
-                      placement={'top'}
-                      trigger={'click'}
-                      key={idx}
-                      overlay={
-                        <p
-                          style={{
-                            display: 'flex',
-                            flexDirection: 'column',
-                            gap: '3px'
-                          }}
-                          className='m-0 p-0'
-                        >
-                          <b className='m-0 p-0'>Confidence Scores:</b>
-                          <span
-                            style={{
-                              display: 'flex',
-                              justifyContent: 'space-evenly'
-                            }}
-                          >
-                            <b>Positive : </b>
-                            {sentence.confidenceScores[0]}
-                          </span>
-                          <span
-                            style={{
-                              display: 'flex',
-                              justifyContent: 'space-evenly'
-                            }}
-                          >
-                            <b>Neutral : </b>
-                            {sentence.confidenceScores[1]}
-                          </span>
-                          <span
-                            style={{
-                              display: 'flex',
-                              justifyContent: 'space-evenly'
-                            }}
-                          >
-                            <b>Negative : </b>
-                            {sentence.confidenceScores[2]}
-                          </span>
-                          {/* {data.count || 0} */}
-                        </p>
-                      }
-                    >
-                      <span
+                  <Tooltip
+                    placement={'top'}
+                    trigger={'click'}
+                    key={idx}
+                    overlay={
+                      <p
                         key={idx}
                         style={{
-                          backgroundColor: `${sentenceColor}`,
-                          cursor: 'pointer'
+                          display: 'flex',
+                          flexDirection: 'column',
+                          gap: '3px'
                         }}
+                        className='m-0 p-0'
                       >
-                        {sentence.text}{' '}
-                      </span>
-                    </Tooltip>
-                  </>
+                        <b className='m-0 p-0'>Confidence Scores:</b>
+                        <span
+                          style={{
+                            display: 'flex',
+                            justifyContent: 'space-evenly'
+                          }}
+                        >
+                          <b>Positive : </b>
+                          {sentence.confidenceScores[0]}
+                        </span>
+                        <span
+                          style={{
+                            display: 'flex',
+                            justifyContent: 'space-evenly'
+                          }}
+                        >
+                          <b>Neutral : </b>
+                          {sentence.confidenceScores[1]}
+                        </span>
+                        <span
+                          style={{
+                            display: 'flex',
+                            justifyContent: 'space-evenly'
+                          }}
+                        >
+                          <b>Negative : </b>
+                          {sentence.confidenceScores[2]}
+                        </span>
+                        {/* {data.count || 0} */}
+                      </p>
+                    }
+                  >
+                    <span
+                      key={idx}
+                      style={{
+                        backgroundColor: `${sentenceColor}`,
+                        cursor: 'pointer'
+                      }}
+                    >
+                      {sentence.text}{' '}
+                    </span>
+                  </Tooltip>
                 )
               })}
             </>
@@ -215,7 +214,7 @@ const EntryDetailsPage = props => {
     setTextAnalysis(currentEntry.textAnalysis)
 
     setDreamEntry({ ...currentEntry, index: index })
-  }, [showAnalysis, params.pathname])
+  }, [])
 
   useEffect(() => {
     if (textAnalysisRef.current !== null) {

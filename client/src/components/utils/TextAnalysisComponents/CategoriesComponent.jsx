@@ -6,15 +6,15 @@ const CategoriesComponent = ({ categories }) => {
       <h1 className='font-monospace mt-3'>CATEGORIES DETECTED</h1>
 
       <div id='categoriesContainer'>
-        {categories.map(category => {
+        {categories.map((category, newidx) => {
           return (
-            <div className='categoryLabelWrapper'>
+            <div key={newidx} className='categoryLabelWrapper'>
               {category.label
                 .replace('/', '')
                 .split('/')
-                .map(newLabel => {
+                .map((newLabel, idx) => {
                   return (
-                    <>
+                    <div key={idx}>
                       <b className='boldCategoryLabel'>{newLabel}</b>
                       <hr
                         style={{
@@ -23,7 +23,7 @@ const CategoriesComponent = ({ categories }) => {
                           marginBottom: '2px'
                         }}
                       />
-                    </>
+                    </div>
                   )
                 })}
 

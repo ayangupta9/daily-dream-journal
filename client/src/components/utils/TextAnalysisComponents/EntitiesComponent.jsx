@@ -28,16 +28,19 @@ const EntitiesComponent = props => {
           </h6>
         ) : null}
 
-        {props.entities.map(entity => {
+        {props.entities.map((entity, idx) => {
           let totalEmotion = 0
 
           Object.values(entity.emotion).forEach(val => {
             totalEmotion += val
           })
 
-
           return (
-            <ul className='list-group list-group-flush' id='entityWrapper'>
+            <ul
+              key={idx}
+              className='list-group list-group-flush'
+              id='entityWrapper'
+            >
               <li className='list-group-item'>
                 <span>Name</span>
                 <h2

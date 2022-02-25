@@ -1,5 +1,5 @@
 import { Formik } from 'formik'
-import React, { useState } from 'react'
+import React, { useRef, useState } from 'react'
 import * as Yup from 'yup'
 import { useNavigate } from 'react-router-dom'
 import '../../styles/Signup.css'
@@ -7,6 +7,7 @@ import '../../styles/Signup.css'
 import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import LoadingModal from '../utils/LoadingModal'
+import { FaEye, FaEyeSlash } from 'react-icons/fa'
 
 const SignUpSchema = Yup.object().shape({
   username: Yup.string()
@@ -25,6 +26,10 @@ const Signup = () => {
   const navigate = useNavigate()
   const [open, setOpen] = useState(false)
 
+  const passwordRef = useRef(null)
+  const [isPassToggled, setIsPassToggled] = useState(false)
+  const togglePassRef = useRef(null)
+
   return (
     <div id='signupPage'>
       <LoadingModal open={open} />
@@ -35,6 +40,9 @@ const Signup = () => {
         hideProgressBar={false}
         newestOnTop={false}
         closeOnClick
+        bodyStyle={{
+          textAlign: 'left'
+        }}
         rtl={false}
         pauseOnFocusLoss
         pauseOnHover
@@ -49,7 +57,7 @@ const Signup = () => {
             validationSchema={SignUpSchema}
             onSubmit={async (values, { resetForm, setSubmitting }) => {
               setOpen(true)
-
+              setSubmitting(false)
               const response = await fetch('/signup', {
                 method: 'POST',
                 mode: 'cors',
@@ -64,7 +72,6 @@ const Signup = () => {
 
               if (result.code === 401 || result.code === 404) {
                 setOpen(false)
-
                 toast.error(result.message)
               } else if (result.code === 200) {
                 setOpen(false)
@@ -77,7 +84,6 @@ const Signup = () => {
                   draggable: true,
                   progress: undefined
                 })
-                setSubmitting(false)
                 navigate('/login')
               }
             }}
@@ -127,14 +133,55 @@ const Signup = () => {
                   <label className='mb-2 ' htmlFor='password'>
                     Password
                   </label>
-                  <input
-                    onChange={formik.handleChange}
-                    value={formik.values.password}
-                    type={'password'}
-                    className='form-control'
-                    id='signuppassword'
-                    name='password'
-                  />
+                  <div className='input-group'>
+                    <input
+                      ref={passwordRef}
+                      onChange={formik.handleChange}
+                      value={formik.values.password}
+                      type={'password'}
+                      className='form-control'
+                      id='signuppassword'
+                      name='password'
+                    />
+
+                    <button
+                      ref={togglePassRef}
+                      style={{
+                        display: 'flex',
+                        justifyContent: 'center',
+                        alignItems: 'center'
+                      }}
+                      onClick={() => {
+                        if (isPassToggled !== true) {
+                          setIsPassToggled(true)
+                          passwordRef.current.type = 'text'
+                          togglePassRef.current.classList.remove(
+                            'btn-outline-secondary'
+                          )
+                          togglePassRef.current.classList.add('btn-secondary')
+                        } else {
+                          setIsPassToggled(false)
+                          passwordRef.current.type = 'password'
+                          togglePassRef.current.classList.remove(
+                            'btn-secondary'
+                          )
+                          togglePassRef.current.classList.add(
+                            'btn-outline-secondary'
+                          )
+                        }
+                      }}
+                      id='toggle-password'
+                      type='button'
+                      className='btn btn-outline-secondary'
+                      aria-label='Show password as plain text. Warning: this will display your password on the screen.'
+                    >
+                      {isPassToggled && isPassToggled === true ? (
+                        <FaEyeSlash />
+                      ) : (
+                        <FaEye />
+                      )}
+                    </button>
+                  </div>
 
                   {formik.errors.password && formik.touched.password ? (
                     <div className='text-danger'>{formik.errors.password}</div>

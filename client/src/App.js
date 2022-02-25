@@ -85,7 +85,13 @@ function App () {
           <Route
             exact
             path='login'
-            element={<>{!isLoggedIn ? <Login /> : <Navigate to='/' />}</>}
+            element={<>{isLoggedIn ? <Navigate to='/' /> : <Login />}</>}
+          />
+
+          <Route
+            exact
+            path='signup'
+            element={<>{isLoggedIn ? <Navigate to='/' /> : <Signup />}</>}
           />
           <Route
             exact
@@ -103,11 +109,7 @@ function App () {
               </>
             }
           />
-          <Route
-            exact
-            path='signup'
-            element={<>{!isLoggedIn ? <Navigate to='/' /> : <Signup />}</>}
-          />
+
           <Route
             exact
             path='create'
